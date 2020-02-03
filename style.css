@@ -1,0 +1,75 @@
+@charset 'utf-8';
+
+
+body {
+    opacity: 0;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
+
+body.load {
+    opacity: 1;
+}
+
+textarea.form-control {
+    height: 150px;
+}
+
+
+
+h1 {
+    font-size: 1.7rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+}
+
+/* 時計用 */
+.clock {
+    width: 400px;
+    height: 400px;
+    border: 6px solid rgb(48, 97, 153);
+    border-radius: 400px;
+    position: relative;
+}
+
+.bar-hour,
+.bar-min,
+.bar-sec {
+    position: absolute;
+    left: 50%;
+    background: rgb(48, 97, 153);
+    transform-origin: center bottom;
+    border-radius: 100%;
+}
+
+.bar-hour {
+    height: 25%;
+    top: 25%;
+    width: 20px;
+    margin-left: -10px;
+}
+
+.bar-min {
+    width: 20px;
+    top: 0;
+    height: 50%;
+    margin-left: -10px;
+}
+
+.bar-sec {
+    width: 4px;
+    top: 0;
+    height: 50%;
+    margin-left: -2px;
+}
+
+.shadowEx {
+    width: 100px;
+    height: 100px;
+
+}

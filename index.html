@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="jumbotron">
+            <div class="container">
+
+                <h1>Vue.jsのごく簡単な見本</h1>
+                <hr class="my-4">
+                <p class="lead">Vue.jsを使えば入力を即時に反映するインタラクティブなサイトが簡単に構築できます。</p>
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <div id="example-bmi" class="pb-5 mb-5 border-bottom">
+                <div class="row">
+                    <div class="col">
+                        <h2>BMI計算機</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bmi-height">身長</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="bmi-height" v-model.number="bmiHeight"
+                                    placeholder="170">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">cm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bmi-weight">体重</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="bmi-weight" v-model.number="bmiWeight"
+                                    placeholder="60">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">kg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>あなたのBMIは<br><strong class="display-4">{{ bmi }}</strong><br>です。</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div id="example-run" class="pb-5 mb-5 border-bottom">
+                <div class="row">
+                    <div class="col">
+                        <h2>マラソンタイム計算機</h2>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        1kmを
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" id="run-min" v-model.number="runMin" placeholder="5">
+                    </div>
+                    <div class="col-auto">
+                        分
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" id="run-sec" v-model.number="runSec" placeholder="30">
+                    </div>
+                    <div class="col-auto">
+                        秒で走ると
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <strong class="display-4">
+                            {{ totalTime }}</strong class="display-4">で完走できます。
+                    </div>
+                </div>
+            </div>
+
+            <div id="example-time" class="pb-5 mb-5 border-bottom">
+                <div class="row">
+                    <div class="col">
+                        <h2>時計</h2>
+                        <p>入力されるデータはユーザーからとは限りません。<br>たとえば、現在時刻をデータとして取得し、角度を計算して表示させるとアナログ時計になります。</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        現在時刻は<br><strong class="display-4">{{ currentTime }}</strong><br>です。
+                    </div>
+                    <div class="col">
+                        <div class="clock">
+                            <div class="bar-hour" :style="{transform: 'rotate(' + currentHour * 30 + 'deg)'}"></div>
+                            <div class="bar-min" :style="{transform: 'rotate(' + currentMin * 6 + 'deg)'}"></div>
+                            <div class="bar-sec" :style="{transform: 'rotate(' + currentSec * 6 + 'deg)'}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="example-box" class="pb-5 mb-5 border-bottom">
+                <div class="row">
+                    <div class="col">
+                        <h2>box-shadowプレビュー</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="box-shadow-x">X方向の距離</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="range" id="box-shadow-x" class="form-control" min="-50" max="50"
+                                        v-model="shadowX">
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" v-model="shadowX">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="box-shadow-y">Y方向の距離</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="range" id="box-shadow-y" class="form-control" min="-50" max="50"
+                                        v-model="shadowY">
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" v-model="shadowY">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="box-shadow-range">ぼかしの距離</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="range" min="0" max="50" id="box-shadow-range" class="form-control"
+                                        v-model="shadowRange">
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" v-model="shadowRange">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="box-shadow-bokeh">広がる距離</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="range" min="-50" max="50" id="box-shadow-bokeh" class="form-control"
+                                        v-model="shadowBokeh">
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" v-model="shadowBokeh">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <div class="shadowEx border border-dark" :style="{'box-shadow': shadow}">
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="bg-light border p-4">
+                            <pre class="mb-0">/* 下記CSSをコピペして使えます。 */
+box-shadow: {{ shadow }};</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="example-tatsuya" class="pb-5 mb-5 border-bottom">
+                <div class="row">
+                    <div class="col">
+                        <h2>藤原竜也になりたい </h2>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea name="tatsuya" class="form-control" v-model="tatsuya"
+                                placeholder="キンキンに冷えてやがるっ・・・!!"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center py-3">
+                        ↓　↓　↓
+                    </div>
+                    <div class="col-12 display-4">
+                        <div class="border bg-light p-4">
+                            <strong>{{ tatsuya | toTatsuya }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
